@@ -1,0 +1,39 @@
+version: '3.8'
+
+networks:
+  dev:
+    driver: bridge
+
+services:
+  customer-service:
+    image: ${REGISTRY:-service-one}/customer-service.api:${PLATFORM:-linux}-${TAG:-latest}
+    depends_on:
+      - "experimentation_db"
+    container_name: customer-service
+    ports:
+      - "5009:80"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ConnectionString=host=worklog_management_db;port=5435;database=Experimentation;username=apiuser;password=apipassword;Pooling=true;
+    networks:
+      - dev
+
+  experimentation_db:
+    image: postgres:latest
+    container_name: experimentation_db
+    environment:
+      - POSTGRES_USER=apiuser
+      - POSTGRES_PASSWORD=apipassword
+      - POSTGRES_DB=Experimentation
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - customer_data:/var/lib/postgresql/data/
+    networks:
+      - dev
+
+volumes:
+  customer_data:
