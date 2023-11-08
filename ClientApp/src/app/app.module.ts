@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { BarComponent } from './bar/bar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    DashboardComponent
+    DashboardComponent,
+    BarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,6 +31,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'app-dashboard', component: DashboardComponent },
+      { path: 'app-bar', component: BarComponent },
     ])
   ],
   providers: [],

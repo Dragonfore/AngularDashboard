@@ -5,6 +5,7 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 EXPOSE 5009
+EXPOSE 4200
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
@@ -13,6 +14,7 @@ RUN dotnet restore "./AngularExperimentation.csproj"
 COPY . .
 WORKDIR "/src/."
 RUN dotnet build "AngularExperimentation.csproj" -c Release -o /app/build
+
 # RUN apt-get update && \
 #     apt-get install -y wget && \
 #     apt-get install -y gnuph2 && \

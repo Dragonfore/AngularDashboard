@@ -5,8 +5,8 @@
     "ng": "ng",
     "prestart": "node aspnetcore-https",
     "start": "run-script-os",
-    "start:windows": "ng serve --port 44496 --ssl --ssl-cert %APPDATA%\\ASP.NET\\https\\%npm_package_name%.pem --ssl-key %APPDATA%\\ASP.NET\\https\\%npm_package_name%.key",
-    "start:default": "ng serve --port 44496 --ssl --ssl-cert $HOME/.aspnet/https/${npm_package_name}.pem --ssl-key $HOME/.aspnet/https/${npm_package_name}.key",
+    "start:windows": "ng serve --poll=2000 --host=0.0.0.0 --port 44496 --ssl --ssl-cert %APPDATA%\\ASP.NET\\https\\%npm_package_name%.pem --ssl-key %APPDATA%\\ASP.NET\\https\\%npm_package_name%.key",
+    "start:default": "ng serve --poll=2000 --host=0.0.0.0 --port 44496 --ssl --ssl-cert $HOME/.aspnet/https/${npm_package_name}.pem --ssl-key $HOME/.aspnet/https/${npm_package_name}.key",
     "build": "ng build",
     "build:ssr": "ng run AngularExperimentation:server:dev",
     "watch": "ng build --watch --configuration development",
@@ -23,6 +23,8 @@
     "@angular/platform-browser-dynamic": "^15.2.8",
     "@angular/platform-server": "^15.2.8",
     "@angular/router": "^15.2.8",
+    "@types/d3": "^7.4.3",
+    "d3": "^7.8.5",
     "bootstrap": "^5.2.3",
     "jquery": "^3.6.4",
     "oidc-client": "^1.11.5",
@@ -50,6 +52,5 @@
   "overrides": {
     "autoprefixer": "10.4.5",
     "webpack": "5.81.0"
-  },
-  "optionalDependencies": {}
+  }
 }
